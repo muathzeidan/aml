@@ -44,20 +44,6 @@
 									"type": "String",
 									"physicalType": "varchar"
 								}
-							},
-							{
-								"source": {
-									"name": "Transaction Amount",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "AMOUNT",
-									"type": "Decimal",
-									"physicalType": "decimal",
-									"scale": 2,
-									"precision": 18
-								}
 							}
 						],
 						"typeConversion": true,
