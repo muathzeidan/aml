@@ -1,0 +1,9 @@
+{
+	"name": "aml-roo-data-factory",
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "cba17b29-9302-47c8-a0b1-768d5932323a",
+		"tenantId": "fcf67057-50c9-4ad4-98f3-ffca64add9e9"
+	}
+}
