@@ -13,7 +13,16 @@
 					"secureOutput": false,
 					"secureInput": false
 				},
-				"userProperties": [],
+				"userProperties": [
+					{
+						"name": "Source",
+						"value": "aml//2017 and 2018 paymentsv2_part1.csv"
+					},
+					{
+						"name": "Destination",
+						"value": "dbo.AML_RAW_DATA"
+					}
+				],
 				"typeProperties": {
 					"source": {
 						"type": "DelimitedTextSource",
@@ -27,7 +36,8 @@
 						}
 					},
 					"sink": {
-						"type": "AzureSqlSink"
+						"type": "AzureSqlSink",
+						"disableMetricsCollection": false
 					},
 					"enableStaging": false,
 					"translator": {
@@ -41,6 +51,30 @@
 								},
 								"sink": {
 									"name": "ACT_CODE",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "Description1",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "DESCRIPTION",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "Transaction Amount",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "S_AMOUNT",
 									"type": "String",
 									"physicalType": "varchar"
 								}
