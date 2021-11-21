@@ -74,9 +74,11 @@
 									"physicalType": "String"
 								},
 								"sink": {
-									"name": "S_AMOUNT",
-									"type": "String",
-									"physicalType": "varchar"
+									"name": "AMOUNT",
+									"type": "Decimal",
+									"physicalType": "decimal",
+									"scale": 2,
+									"precision": 18
 								}
 							}
 						],
