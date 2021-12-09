@@ -1,5 +1,5 @@
 {
-	"name": "DestinationDataset_d8p",
+	"name": "DestinationTransactionsDataset",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "AMLDatabase",

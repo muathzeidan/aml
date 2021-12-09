@@ -442,7 +442,7 @@
 				],
 				"outputs": [
 					{
-						"referenceName": "DestinationDataset_d8p",
+						"referenceName": "DestinationTransactionsDataset",
 						"type": "DatasetReference"
 					}
 				]
