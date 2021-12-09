@@ -64,6 +64,26 @@
 			"dependsOn": []
 		},
 		{
+			"name": "[concat(parameters('factoryName'), '/DestinationTransactionsDataset')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AMLDatabase",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "AzureSqlTable",
+				"schema": [],
+				"typeProperties": {
+					"table": "Azure Blob Storage file"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/AMLDatabase')]"
+			]
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/RawTable')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
@@ -100,7 +120,174 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/amldataset')]",
+			"name": "[concat(parameters('factoryName'), '/SourceTransactionsDataset_xlsx')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureBlobStorage1",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "Excel",
+				"typeProperties": {
+					"sheetName": "Sheet1",
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"fileName": "2017 and 2018 paymentsv2_part1-sample.xlsx",
+						"container": "aml"
+					},
+					"firstRowAsHeader": true
+				},
+				"schema": [
+					{
+						"name": "Account Code",
+						"type": "String"
+					},
+					{
+						"name": "Description",
+						"type": "String"
+					},
+					{
+						"name": "Transaction Date",
+						"type": "String"
+					},
+					{
+						"name": "Due Date",
+						"type": "String"
+					},
+					{
+						"name": "Transaction Reference",
+						"type": "String"
+					},
+					{
+						"name": "Description.1",
+						"type": "String"
+					},
+					{
+						"name": "Accounting Period",
+						"type": "String"
+					},
+					{
+						"name": "Entry Date",
+						"type": "String"
+					},
+					{
+						"name": "Base Amount",
+						"type": "String"
+					},
+					{
+						"name": "Currency Code",
+						"type": "String"
+					},
+					{
+						"name": "Transaction Amount",
+						"type": "String"
+					},
+					{
+						"name": "Journal No.",
+						"type": "String"
+					},
+					{
+						"name": "Journal Line",
+						"type": "String"
+					},
+					{
+						"name": "Journal Type",
+						"type": "String"
+					},
+					{
+						"name": "Journal Source",
+						"type": "String"
+					},
+					{
+						"name": "Allocation Ref.",
+						"type": "String"
+					},
+					{
+						"name": "Allocation Marker",
+						"type": "String"
+					},
+					{
+						"name": "Allocation Date",
+						"type": "String"
+					},
+					{
+						"name": "Activity Code Analysis Code\r\n",
+						"type": "String"
+					},
+					{
+						"name": "Cost Centre  Analysis Code",
+						"type": "String"
+					},
+					{
+						"name": "Authority for Expenditure Analysis Code",
+						"type": "String"
+					},
+					{
+						"name": "Name",
+						"type": "String"
+					},
+					{
+						"name": "Division of Interest  Analysis Code",
+						"type": "String"
+					},
+					{
+						"name": "Withholding Tax Rate  Analysis Code",
+						"type": "String"
+					},
+					{
+						"name": "Contract Number",
+						"type": "String"
+					},
+					{
+						"name": "PO Number",
+						"type": "String"
+					},
+					{
+						"name": "Supplier Invoice Number",
+						"type": "String"
+					},
+					{
+						"name": "RST/SOCInvoice Number",
+						"type": "String"
+					},
+					{
+						"name": "Vendor Code",
+						"type": "String"
+					},
+					{
+						"name": "Vendor Name",
+						"type": "String"
+					},
+					{
+						"name": "Opex/Capex",
+						"type": "String"
+					},
+					{
+						"name": "Lifting",
+						"type": "String"
+					},
+					{
+						"name": "Billing to Partners Analysis Code",
+						"type": "String"
+					},
+					{
+						"name": "Quantity",
+						"type": "String"
+					},
+					{
+						"name": "Remark",
+						"type": "String"
+					}
+				]
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/AzureBlobStorage1')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/amldataset_csv')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
 			"properties": {
@@ -269,6 +456,471 @@
 			]
 		},
 		{
+			"name": "[concat(parameters('factoryName'), '/CopyPipeline_d8p')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "Copy_d8p",
+						"type": "Copy",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [
+							{
+								"name": "Source",
+								"value": "aml//2017 and 2018 paymentsv2_part1-sample.xlsx"
+							},
+							{
+								"name": "Destination",
+								"value": ".Azure Blob Storage file"
+							}
+						],
+						"typeProperties": {
+							"source": {
+								"type": "ExcelSource",
+								"storeSettings": {
+									"type": "AzureBlobStorageReadSettings",
+									"recursive": true,
+									"enablePartitionDiscovery": false
+								}
+							},
+							"sink": {
+								"type": "AzureSqlSink",
+								"tableOption": "autoCreate"
+							},
+							"enableStaging": false,
+							"validateDataConsistency": false,
+							"translator": {
+								"type": "TabularTranslator",
+								"mappings": [
+									{
+										"source": {
+											"name": "Account Code",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "Account Code",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "Description",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "Description",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "Transaction Date",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "Transaction Date",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "Due Date",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "Due Date",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "Transaction Reference",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "Transaction Reference",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "Description.1",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "Description.1",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "Accounting Period",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "Accounting Period",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "Entry Date",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "Entry Date",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "Base Amount",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "Base Amount",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "Currency Code",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "Currency Code",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "Transaction Amount",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "Transaction Amount",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "Journal No.",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "Journal No.",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "Journal Line",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "Journal Line",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "Journal Type",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "Journal Type",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "Journal Source",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "Journal Source",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "Allocation Ref.",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "Allocation Ref.",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "Allocation Marker",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "Allocation Marker",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "Allocation Date",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "Allocation Date",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "Activity Code Analysis Code\r\n",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "Activity Code Analysis Code\r\n",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "Cost Centre  Analysis Code",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "Cost Centre  Analysis Code",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "Authority for Expenditure Analysis Code",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "Authority for Expenditure Analysis Code",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "Name",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "Name",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "Division of Interest  Analysis Code",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "Division of Interest  Analysis Code",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "Withholding Tax Rate  Analysis Code",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "Withholding Tax Rate  Analysis Code",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "Contract Number",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "Contract Number",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "PO Number",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "PO Number",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "Supplier Invoice Number",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "Supplier Invoice Number",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "RST/SOCInvoice Number",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "RST/SOCInvoice Number",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "Vendor Code",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "Vendor Code",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "Vendor Name",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "Vendor Name",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "Opex/Capex",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "Opex/Capex",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "Lifting",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "Lifting",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "Billing to Partners Analysis Code",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "Billing to Partners Analysis Code",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "Quantity",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "Quantity",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "Remark",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "Remark",
+											"type": "String"
+										}
+									}
+								],
+								"typeConversion": true,
+								"typeConversionSettings": {
+									"allowDataTruncation": true,
+									"treatBooleanAsNumber": false
+								}
+							}
+						},
+						"inputs": [
+							{
+								"referenceName": "SourceTransactionsDataset_xlsx",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						],
+						"outputs": [
+							{
+								"referenceName": "DestinationTransactionsDataset",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						]
+					}
+				],
+				"policy": {
+					"elapsedTimeMetric": {},
+					"cancelAfter": {}
+				},
+				"annotations": []
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/datasets/SourceTransactionsDataset_xlsx')]",
+				"[concat(variables('factoryId'), '/datasets/DestinationTransactionsDataset')]"
+			]
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/aml-data-pipeline')]",
 			"type": "Microsoft.DataFactory/factories/pipelines",
 			"apiVersion": "2018-06-01",
@@ -362,7 +1014,7 @@
 						},
 						"inputs": [
 							{
-								"referenceName": "amldataset",
+								"referenceName": "amldataset_csv",
 								"type": "DatasetReference",
 								"parameters": {}
 							}
@@ -383,7 +1035,7 @@
 				"annotations": []
 			},
 			"dependsOn": [
-				"[concat(variables('factoryId'), '/datasets/amldataset')]",
+				"[concat(variables('factoryId'), '/datasets/amldataset_csv')]",
 				"[concat(variables('factoryId'), '/datasets/RawTable')]"
 			]
 		}
