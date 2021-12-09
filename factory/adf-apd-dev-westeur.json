@@ -1,0 +1,9 @@
+{
+	"name": "adf-apd-dev-westeur",
+	"location": "westeurope",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "12d3381d-fff9-4198-8bd8-c095316b1776",
+		"tenantId": "ea8adf8a-b1ad-46ac-bdf1-8b592caee014"
+	}
+}
