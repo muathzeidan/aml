@@ -1,5 +1,5 @@
 {
-	"name": "SourceDataset_d8p",
+	"name": "SourceTransactionsDataset_xlsx",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "AzureBlobStorage1",

@@ -436,7 +436,7 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "SourceDataset_d8p",
+						"referenceName": "SourceTransactionsDataset_xlsx",
 						"type": "DatasetReference"
 					}
 				],

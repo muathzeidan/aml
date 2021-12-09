@@ -90,7 +90,7 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "amldataset_xlsx",
+						"referenceName": "amldataset_csv",
 						"type": "DatasetReference"
 					}
 				],

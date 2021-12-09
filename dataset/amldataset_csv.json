@@ -1,5 +1,5 @@
 {
-	"name": "amldataset_xlsx",
+	"name": "amldataset_csv",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "AzureBlobStorage1",
