@@ -2,7 +2,7 @@
 	"name": "RawTable",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "AzureSqlDatabase4",
+			"referenceName": "AMLDatabase",
 			"type": "LinkedServiceReference"
 		},
 		"annotations": [],
