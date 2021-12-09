@@ -1,5 +1,5 @@
 {
-	"name": "CopyPipeline_d8p",
+	"name": "aml-transactions-pipeline",
 	"properties": {
 		"activities": [
 			{
