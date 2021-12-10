@@ -8,10 +8,9 @@
 		"annotations": [],
 		"type": "Excel",
 		"typeProperties": {
-			"sheetName": "Sheet1",
 			"location": {
 				"type": "AzureBlobStorageLocation",
-				"fileName": "2017 and 2018 paymentsv2_part1-sample.xlsx",
+				"fileName": "2017 and 2018 paymentsv2_part1-sample1.xlsx",
 				"container": "aml"
 			},
 			"firstRowAsHeader": true
