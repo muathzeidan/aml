@@ -85,8 +85,8 @@
 								},
 								"sink": {
 									"name": "Due Date",
-									"type": "String",
-									"physicalType": "nvarchar"
+									"type": "DateTime",
+									"physicalType": "date"
 								}
 							},
 							{
@@ -133,8 +133,8 @@
 								},
 								"sink": {
 									"name": "Entry Date",
-									"type": "String",
-									"physicalType": "nvarchar"
+									"type": "DateTime",
+									"physicalType": "date"
 								}
 							},
 							{
@@ -145,8 +145,10 @@
 								},
 								"sink": {
 									"name": "Base Amount",
-									"type": "String",
-									"physicalType": "nvarchar"
+									"type": "Decimal",
+									"physicalType": "decimal",
+									"scale": 0,
+									"precision": 18
 								}
 							},
 							{
@@ -169,8 +171,10 @@
 								},
 								"sink": {
 									"name": "Transaction Amount",
-									"type": "String",
-									"physicalType": "nvarchar"
+									"type": "Decimal",
+									"physicalType": "decimal",
+									"scale": 0,
+									"precision": 18
 								}
 							},
 							{
@@ -253,8 +257,8 @@
 								},
 								"sink": {
 									"name": "Allocation Date",
-									"type": "String",
-									"physicalType": "nvarchar"
+									"type": "DateTime",
+									"physicalType": "date"
 								}
 							},
 							{
