@@ -1,0 +1,7 @@
+{
+	"name": "AzureSqlDatabase1",
+	"properties": {
+		"privateLinkResourceId": "/subscriptions/a7a77954-01cf-49da-9713-5335e7f7805f/resourceGroups/aml/providers/Microsoft.Sql/servers/aml-roo",
+		"groupId": "sqlServer"
+	}
+}
