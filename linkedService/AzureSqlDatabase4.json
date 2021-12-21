@@ -5,8 +5,11 @@
 		"annotations": [],
 		"type": "AzureSqlDatabase",
 		"typeProperties": {
-			"connectionString": "integrated security=False;encrypt=True;connection timeout=30;data source=aml-roo.database.windows.net;initial catalog=aml_db;user id=mzeidan",
-			"encryptedCredential": "ew0KICAiVmVyc2lvbiI6ICIyMDE3LTExLTMwIiwNCiAgIlByb3RlY3Rpb25Nb2RlIjogIktleSIsDQogICJTZWNyZXRDb250ZW50VHlwZSI6ICJQbGFpbnRleHQiLA0KICAiQ3JlZGVudGlhbElkIjogIkRBVEFGQUNUT1JZQDI5Q0EzMjkwLUIxMUQtNEM2OS04MUEwLTIyOUE4REY5QzBCRl84YTE4YWJmYS02Njk2LTRlNWUtODc2Zi01YjcwOWExZmI4ZjkiDQp9"
+			"connectionString": "Integrated Security=False;Encrypt=True;Connection Timeout=30;Data Source=aml-roo.database.windows.net;Initial Catalog=aml_db",
+			"credential": {
+				"referenceName": "credential1",
+				"type": "CredentialReference"
+			}
 		}
 	}
 }
