@@ -1,0 +1,163 @@
+{
+	"name": "SourceTransactionsDataset_xlsx",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureBlobStorage1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Excel",
+		"typeProperties": {
+			"sheetName": "Sheet1",
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "2017 and 2018 paymentsv2_part1-sample.xlsx",
+				"container": "aml"
+			},
+			"firstRowAsHeader": true
+		},
+		"schema": [
+			{
+				"name": "Account Code",
+				"type": "String"
+			},
+			{
+				"name": "Description",
+				"type": "String"
+			},
+			{
+				"name": "Transaction Date",
+				"type": "String"
+			},
+			{
+				"name": "Due Date",
+				"type": "String"
+			},
+			{
+				"name": "Transaction Reference",
+				"type": "String"
+			},
+			{
+				"name": "Description.1",
+				"type": "String"
+			},
+			{
+				"name": "Accounting Period",
+				"type": "String"
+			},
+			{
+				"name": "Entry Date",
+				"type": "String"
+			},
+			{
+				"name": "Base Amount",
+				"type": "String"
+			},
+			{
+				"name": "Currency Code",
+				"type": "String"
+			},
+			{
+				"name": "Transaction Amount",
+				"type": "String"
+			},
+			{
+				"name": "Journal No.",
+				"type": "String"
+			},
+			{
+				"name": "Journal Line",
+				"type": "String"
+			},
+			{
+				"name": "Journal Type",
+				"type": "String"
+			},
+			{
+				"name": "Journal Source",
+				"type": "String"
+			},
+			{
+				"name": "Allocation Ref.",
+				"type": "String"
+			},
+			{
+				"name": "Allocation Marker",
+				"type": "String"
+			},
+			{
+				"name": "Allocation Date",
+				"type": "String"
+			},
+			{
+				"name": "Activity Code Analysis Code\r\n",
+				"type": "String"
+			},
+			{
+				"name": "Cost Centre  Analysis Code",
+				"type": "String"
+			},
+			{
+				"name": "Authority for Expenditure Analysis Code",
+				"type": "String"
+			},
+			{
+				"name": "Name",
+				"type": "String"
+			},
+			{
+				"name": "Division of Interest  Analysis Code",
+				"type": "String"
+			},
+			{
+				"name": "Withholding Tax Rate  Analysis Code",
+				"type": "String"
+			},
+			{
+				"name": "Contract Number",
+				"type": "String"
+			},
+			{
+				"name": "PO Number",
+				"type": "String"
+			},
+			{
+				"name": "Supplier Invoice Number",
+				"type": "String"
+			},
+			{
+				"name": "RST/SOCInvoice Number",
+				"type": "String"
+			},
+			{
+				"name": "Vendor Code",
+				"type": "String"
+			},
+			{
+				"name": "Vendor Name",
+				"type": "String"
+			},
+			{
+				"name": "Opex/Capex",
+				"type": "String"
+			},
+			{
+				"name": "Lifting",
+				"type": "String"
+			},
+			{
+				"name": "Billing to Partners Analysis Code",
+				"type": "String"
+			},
+			{
+				"name": "Quantity",
+				"type": "String"
+			},
+			{
+				"name": "Remark",
+				"type": "String"
+			}
+		]
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

@@ -1,0 +1,16 @@
+{
+	"name": "DestinationTransactionsDataset",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AMLDatabase",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"table": "Azure Blob Storage file"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

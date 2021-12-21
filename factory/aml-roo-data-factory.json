@@ -1,0 +1,15 @@
+{
+	"name": "aml-roo-data-factory",
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned,UserAssigned",
+		"principalId": "cba17b29-9302-47c8-a0b1-768d5932323a",
+		"tenantId": "fcf67057-50c9-4ad4-98f3-ffca64add9e9",
+		"userAssignedIdentities": {
+			"/subscriptions/a7a77954-01cf-49da-9713-5335e7f7805f/resourcegroups/aml/providers/Microsoft.ManagedIdentity/userAssignedIdentities/id-apd-dev": {
+				"clientId": "2576ba1f-f64e-439e-a79a-5ec328e044f3",
+				"principalId": "94914ff2-a931-494e-8b1f-f4ddb69c20aa"
+			}
+		}
+	}
+}

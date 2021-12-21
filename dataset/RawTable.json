@@ -1,0 +1,32 @@
+{
+	"name": "RawTable",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AMLDatabase",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "ACT_CODE",
+				"type": "varchar"
+			},
+			{
+				"name": "DESCRIPTION",
+				"type": "varchar"
+			},
+			{
+				"name": "AMOUNT",
+				"type": "decimal",
+				"precision": 18,
+				"scale": 2
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "AML_RAW_DATA"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}
